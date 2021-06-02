@@ -2,11 +2,11 @@
 @section('content')
     <div class="movie-info border-b border-gray-800">
         <div class="container mx-auto px-4 py-16 flex flex-col md:flex-row">
-            <img src="https://images-na.ssl-images-amazon.com/images/S/pv-target-images/fb4358b042adbf87a337f58bfc44ca6516388f7d6ed9c69f174cc71e473dab08._RI_V_TTW_.jpg"
-                alt="Parasite" class="w-64 md:w-96">
+            <img src="https://images.tmdb.org/t/p/w500/{{ $movie['poster_path'] }}"
+                alt="Parasite" class="w-64 lg:w-96">
 
             <div class="md:ml-24">
-                <h2 class="text-4xl font-semibold">Parasite</h2>
+                <h2 class="text-4xl font-semibold">{{$movie['title']}}</h2>
 
                 <div class="flex flex-wrap items-center text-gray-400 text-sm ">
                     <svg class="fill-current text-orange-500 w-4" viewBox="0 0 24 24">
@@ -17,17 +17,18 @@
                         </g>
                     </svg>
 
-                    <span class="ml-1">85%</span>
+                    <span class="ml-1">{{ $movie['vote_average'] * 10 . '%' }}</span>
                     <span class="mx-2">|</span>
-                    <span> Feb 20, 2020</span>
+                    <span> {{ \Carbon\Carbon::parse($movie['release_date'])->format('d M, Y') }}</span>
                     <span class="mx-2">|</span>
-                    <span class="m2-2">Action, Thriller, Comedy</span>
+                    <span class="m2-2">           @foreach ($movie['genres'] as $genre)
+                        {{ $genre['name'] }} @if (!$loop->last),
+                        @endif
+                    @endforeach</span>
                 </div>
 
                 <p class="text-gray-300 mt-8">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Inventore, sunt at? Pariatur, aliquam atque.
-                    Perspiciatis, nihil, laudantium illum illo voluptatem mollitia totam quibusdam saepe nostrum repellendus
-                    natus voluptatum aperiam quod.
+                    {{$movie['overview']}}.
                 </p>
 
                 <div class="mt-12">
