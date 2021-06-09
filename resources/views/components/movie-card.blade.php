@@ -1,6 +1,6 @@
 <div class="mt-8">
     <a href="{{route('movies.show',$movie['id'])}}">
-        <img src="https://images.tmdb.org/t/p/w500/{{ $movie['poster_path'] }}"
+        <img src="{{ $movie['poster_path'] }}"
             alt="{{ $movie['title'] }}" class="hover:opacity-75 transition ease duration-2">
     </a>
     <div class="mt-2">
@@ -15,12 +15,12 @@
                 </g>
             </svg>
 
-            <span class="ml-1">{{ $movie['vote_average'] * 10 . '%' }}</span>
+            <span class="ml-1">{{$movie['vote_average']}}</span>
             <span class="mx-2">|</span>
-            <span>{{ \Carbon\Carbon::parse($movie['release_date'])->format('d M, Y') }}</span>
+            <span>{{$movie['release_date'] }}</span>
         </div>
 
         <div class="text-gray-400 text-sm">
-            @foreach ($movie['genre_ids'] as $genre){{ $generos->get($genre) }} @if(!$loop->last),@endif @endforeach</div>
+            {{$movie['genres']}}</div>
     </div>
 </div>
