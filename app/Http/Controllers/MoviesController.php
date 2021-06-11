@@ -50,7 +50,7 @@ class MoviesController extends Controller
             $nowPlaying,
             $genero
         );
-        return view('index', $viewModel);
+        return view('movies.index', $viewModel);
     }
 
     /**
@@ -88,7 +88,7 @@ class MoviesController extends Controller
             ->get('https://api.themoviedb.org/3/movie/' . $id . '?append_to_response=credits,videos,images')
             ->json();
         $viewModel = new SingularViewModel($movie);
-        return view('show', $viewModel);
+        return view('movies.show', $viewModel);
     }
 
     /**
