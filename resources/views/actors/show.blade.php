@@ -66,11 +66,11 @@
 
 
     <div class="mt-4">
-        <a href="{{route('movies.show',$movie['id'])}}" class="hover:opacity-75 transition ease-in-out duration-150">
+        <a href="{{$movie['linkToPage']}}" class="hover:opacity-75 transition ease-in-out duration-150">
             <img src="{{$movie['poster_path']}}" alt="">
         </a>
 
-        <a href="{{route('movies.show',$movie['id'])}}" class="text-sm leading-normal blovk text-gray-400 hover:text-white mt-1">{{$movie['title']}}</a>
+        <a href="{{$movie['linkToPage']}}" class="text-sm leading-normal blovk text-gray-400 hover:text-white mt-1">{{$movie['title']}}</a>
     </div>
     @endforeach
 </div>
